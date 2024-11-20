@@ -39,6 +39,23 @@ namespace TheWorld
             CurrentCell = newCell;
         }
 
+		public Cell FindBestCellToMove()
+		{
+			Cell[,] cells = World.Cells;
+			Cell bestCell = null;
+			for (int i = 0; i < World.Width; i++)
+			{
+				for (int j = 0; j < World.Height; j++)
+				{
+					if (cells[i, j].HowManyHerbivores() > CurrentCell.HowManyHerbivores())
+					{
+						bestCell = cells[i, j];
+						CurrentCell = bestCell;
+					}
+				}
+			}
+			return bestCell;
+		}
 
-    }
+	}
 }

@@ -8,32 +8,28 @@ namespace TheWorld
 {
     internal class World
     {
-        private int width;
-        private int height;
-        private Cell[,] cells;
+        public static int Width;
+        public static int Height;
+        public static Cell[,] Cells;
 
         public World(int width, int height)
         {
-            this.width = width;
-            this.height = height;
-            cells = new Cell[width, height];
+            Width = width;
+            Height = height;
+            Cells = new Cell[width, height];
 
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
                 {
-                    cells[i, j] = new Cell(i, j);
+                    Cells[i, j] = new Cell(i, j);
                 }
             }
         }
-
-        public int Width { get => width; set => width = value; }
-        public int Height { get => height; set => height = value; }
-        internal Cell[,] Cells { get => cells; set => cells = value; }
-
+      
         public Cell GetCell(int x, int y)
         {
-            return cells[x, y];
+            return Cells[x, y];
         }
 
         //public void AddCreature(Creature creature, int x, int y)
@@ -57,11 +53,7 @@ namespace TheWorld
         //    }
         //}
 
-        public List<Cell> GetNeighbours(Cell cell)
-        {
-            List<Cell> neighbourCells = new List<Cell>();
-            return neighbourCells;
-        }
+        
 
     }
 }

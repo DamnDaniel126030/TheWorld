@@ -29,10 +29,23 @@ namespace TheWorld
             CurrentCell = newCell;
         }
 
-        //public Cell FindBestCellToMove()
-        //{
-            
-        //}
+        public Cell FindBestCellToMove()
+        {
+            Cell[,] cells = World.Cells;
+            Cell bestCell = null;
+            for (int i = 0; i < World.Width; i++)
+            {
+                for (int j = 0; j < World.Height; j++)
+                {
+                    if (cells[i, j].Plant != null && cells[i, j].HowManyCarnivores() < CurrentCell.HowManyCarnivores())
+                    {
+                        bestCell = cells[i, j];
+                        CurrentCell = bestCell;
+                    }
+                }
+            }
+            return bestCell;
+        }
 
         public void EatPlant()
         {
