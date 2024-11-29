@@ -10,7 +10,7 @@ namespace TheWorld
     {
         public static int Width;
         public static int Height;
-        public static Cell[,] Cells;
+        public Cell[,] Cells;
 
         public World(int width, int height)
         {
@@ -27,33 +27,30 @@ namespace TheWorld
             }
         }
       
-        public Cell GetCell(int x, int y)
+        public static Cell GetCell(int x, int y)
         {
-            return Cells[x, y];
+            //World staticWorld = new World(Width, Height);
+            //return staticWorld.Cells[x, y];                       //Mindig újat fog csinálni úgyhogy nem jó.........
         }
 
-        //public void AddCreature(Creature creature, int x, int y)
-        //{
-        //    cells[x, y] = creature;
-        //}
+        public void AddCreature(Creature creature, int x, int y)
+        {
+			//World staticWorld = new World(Width, Height);
+			//staticWorld.Cells[x, y].Inhabitants.Add(creature);
+		}
 
-        //public void AddPlant(Plant plant, int x, int y)
-        //{
-        //    cells[x, y] = plant;
-        //}
+        public void AddPlant(Plant plant, int x, int y)
+        {
+			//World staticWorld = new World(Width, Height);
+   //         staticWorld.Cells[x, y].Plant = plant;
+		}
 
-        //public void RemoveCreature(Creature creature)
-        //{
-        //    for (int i = 0; i < width; i++)
-        //    {
-        //        for (int j = 0; j < height; j++)
-        //        {
-        //            if ()
-        //        }
-        //    }
-        //}
+        public void RemoveCreature(Creature creature, int x, int y)
+        {
+            
+        }
 
-        
+
 
     }
 }

@@ -24,10 +24,11 @@ namespace TheWorld
 
         public int X { get => x; set => x = value; }
         public int Y { get => y; set => y = value; }
-        internal List<Creature> Inhabitants { get => inhabitants; set => inhabitants = value; }
-        internal Plant Plant { get => plant; set => plant = value; }
+        public List<Creature> Inhabitants { get => inhabitants; set => inhabitants = value; }
+        public Plant Plant { get => plant; set => plant = value; }
+		public List<Cell> NeighbourCells { get => neighbourCells; set => neighbourCells = value; }
 
-        public void AddCreature(Creature creature)
+		public void AddCreature(Creature creature)
         {
             inhabitants.Add(creature);
         }
@@ -70,8 +71,32 @@ namespace TheWorld
 
         public void GetNeighbourCells()
         {
-            Cell currentCell = World.Cells[this.x, this.y];
-            //if (currentCell )
+            for (int dx = -1; dx <= 1; dx++)
+            {
+                for (int dy = -1; dy <= 1; dy++)
+                {
+                    if (dx == 0 && dy == 0) continue;
+                    int nx = this.x + dx;
+                    int ny = this.y + dy;
+                    if (nx >= 0 && ny >= 0 && nx < World.Width && ny < World.Height)
+                    {
+                        this.neighbourCells.Add(World.GetCell(nx, ny));
+                    }
+                }
+            }
+
+        }
+
+        public void SpreadPlant()
+        {
+            if (this.plant != null && this.plant.IsFullyGrown)
+            {
+                this.GetNeighbourCells();
+                foreach (Cell cell in this.neighbourCells)
+                {
+                    cell.plant = this.plant;
+                }
+            }
         }
 	}
 }

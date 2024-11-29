@@ -25,13 +25,8 @@ namespace TheWorld
 			this.growthLevel++;
 			if (growthLevel == 5)
 			{
-				Spread();
+				isFullyGrown = true;
 			}
-		}
-
-		public void Spread()
-		{
-
 		}
 
 	}
